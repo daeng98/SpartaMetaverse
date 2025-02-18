@@ -6,6 +6,6 @@ public class ResultUI : BaseUI
 {
     protected override UIState GetUIState()
     {
-        return UIState.Result;
+        return UIState.Main;
     }
 }

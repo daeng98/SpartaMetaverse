@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class BaseController : MonoBehaviour
 {
     protected Rigidbody2D rigid;
-    protected AnimationController anim;
     protected StatController stat;
 
     [SerializeField] protected SpriteRenderer characterRenderer;
@@ -18,12 +17,10 @@ public class BaseController : MonoBehaviour
     public Vector2 MovementDirection { get { return movementDirection; } }
 
     private bool isFilpX = true;
-    //private bool isFilpY = false;
 
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        anim = GetComponent<AnimationController>();
     }
 
     protected virtual void FixedUpdate()
