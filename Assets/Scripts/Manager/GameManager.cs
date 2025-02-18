@@ -10,13 +10,13 @@ public class GameManager : MonoBehaviour
 
     private int currentScore = 0;
 
-    UiManager um;
-    public UiManager UiManager { get { return um; } }
+    UIManager um;
+    public UIManager UiManager { get { return um; } }
 
     private void Awake()
     {
         gm = this;
-        um = FindObjectOfType<UiManager>();
+        um = FindObjectOfType<UIManager>();
     }
 
     public void Start()
