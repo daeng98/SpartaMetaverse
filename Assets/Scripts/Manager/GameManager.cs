@@ -5,38 +5,37 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager gm;
-    public static GameManager Instance { get { return gm; } }
+    public static GameManager Instance;
 
     private int currentScore = 0;
 
-    UIManager um;
-    public UIManager UiManager { get { return um; } }
+    private UIManager uiManager;
 
     private void Awake()
     {
-        gm = this;
-        um = FindObjectOfType<UIManager>();
+        Instance = this;
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     public void Start()
     {
-        um.UpdateScore(0);
+        uiManager.UpdateScore(0);
     }
 
-    public void GameOver()
+
+    public void StartGame()
     {
-        um.SetRestart();
+        SceneManager.LoadScene("MiniGameScenes"); // ¾À ºÒ·¯¿À±â
     }
 
-    public void RestartGame()
+    public void ExitGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // ¾À ºÒ·¯¿À±â
+        SceneManager.LoadScene("MainScenes"); // ¾À ºÒ·¯¿À±â
     }
 
     public void AddScore(int score)
     {
         currentScore += score;
-        um.UpdateScore(currentScore);
+        uiManager.UpdateScore(currentScore);
     }
 }

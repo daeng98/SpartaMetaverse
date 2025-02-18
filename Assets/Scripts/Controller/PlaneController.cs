@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
                 {
-                    gm.RestartGame();
+                    gm.ExitGame();
                 }
             }
             else
@@ -90,6 +90,5 @@ public class Player : MonoBehaviour
         deathCooldown = 1f;
 
         animator.SetInteger("isDie", 1);
-        gm.GameOver();
     }
 }

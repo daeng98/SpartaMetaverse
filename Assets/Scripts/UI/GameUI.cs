@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameUI : MonoBehaviour
+public class GameUI : BaseUI
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override UIState GetUIState()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return UIState.Game;
     }
 }

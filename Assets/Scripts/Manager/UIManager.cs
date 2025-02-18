@@ -3,26 +3,63 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum UIState
+{
+    Main,
+    Game,
+    Result,
+    How
+}
+
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreTxt;
-    public TextMeshProUGUI restratTxt;
+    MainUI main;
+    GameUI game;
+    ResultUI result;
+    HowtoUI how;
 
-    void Start()
+    public TextMeshProUGUI Score;
+
+    private UIState currentState;
+
+    private void Awake()
     {
-        if (scoreTxt == null)
-            Debug.LogError("score text is null");
-        if (restratTxt == null)
-            Debug.LogError("restrat text is null");
+        main = GetComponentInChildren<MainUI>(true);
+        main.Init(this);
+        //game = GetComponentInChildren<GameUI>(true);
+        //game.Init(this);
+        //result = GetComponentInChildren<ResultUI>(true);
+        //result.Init(this);
+        how = GetComponentInChildren<HowtoUI>(true);
+        how.Init(this);
+
+        ChangeState(UIState.Main);
     }
 
-    public void SetRestart()
+    public void SetPlayGame()
     {
-        restratTxt.gameObject.SetActive(true);
+        ChangeState(UIState.Game);
+    }
+    public void SetResult()
+    {
+        ChangeState(UIState.Result);
+    }
+    public void SetHow()
+    {
+        ChangeState(UIState.How);
+    }
+
+    public void ChangeState(UIState state)
+    {
+        currentState = state;
+        main.SetActive(currentState);
+        //game.SetActive(currentState);
+        //result.SetActive(currentState);
+        how.SetActive(currentState);
     }
 
     public void UpdateScore(int score)
     {
-        scoreTxt.text = score.ToString();
+        Score.text = score.ToString();
     }
 }

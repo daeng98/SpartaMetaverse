@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BaseController : MonoBehaviour
 {
@@ -9,9 +10,15 @@ public class BaseController : MonoBehaviour
     protected StatController stat;
 
     [SerializeField] protected SpriteRenderer characterRenderer;
+    [SerializeField] protected Sprite LeftRight;
+    [SerializeField] protected Sprite Up;
+    [SerializeField] protected Sprite Down;
 
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
+
+    private bool isFilpX = true;
+    //private bool isFilpY = false;
 
     protected virtual void Awake()
     {
@@ -21,6 +28,7 @@ public class BaseController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        Rotate(movementDirection);
         Movement(movementDirection);
     }
 
@@ -29,6 +37,37 @@ public class BaseController : MonoBehaviour
         direction = direction * 3;
 
         rigid.velocity = direction;
-        //anim.Move(direction);
+    }
+
+    private void Rotate(Vector2 direction)
+    {
+        bool filpX = direction.x > 0f;
+        bool filpUp = direction.y > 0f;
+        bool filpDown = direction.y < 0f;
+        bool stayX = direction.x == 0f;
+        bool stayY = direction.y == 0f;
+
+        characterRenderer.sprite = LeftRight;
+
+        if (filpX != isFilpX)
+        {
+            isFilpX = filpX;
+            characterRenderer.flipX = isFilpX;
+        }
+
+        if (filpUp)
+        {
+            characterRenderer.sprite = Up;
+        }
+
+        if (filpDown)
+        {
+            characterRenderer.sprite = Down;
+        }
+
+        if (stayX && stayY)
+        {
+            characterRenderer.sprite = Down;
+        }
     }
 }
