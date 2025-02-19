@@ -21,13 +21,14 @@ public class UIManager : MonoBehaviour
     ResultUI result;
 
     private int nowScore = 0;
-    private int totalScore = 0;
+    private int bestScore = 0;
+    public int totalScore = 0;
 
     private UIState currentState;
 
     public static UIManager Instance;
 
-    public static event Action<int, int> OnScoreUpdated;
+    public static event Action<int, int, int> OnScoreUpdated;
 
     private void Awake()
     {
@@ -106,37 +107,38 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int now, int total)
+    public void UpdateScore(int now, int total, int best)
     {
-        if (main == null)
-        {
-            main = FindObjectOfType<MainUI>();
-            if (main == null)
-            {
-                Debug.LogError("MainUI를 찾을 수 없습니다.");
-                return;
-            }
-        }
-
-        if (main.totalScore == null)
-        {
-            Debug.LogError("TotalScore가 NULL입니다.");
-            return;
-        }
-
         nowScore = now;
         totalScore = total;
 
-        Debug.Log($"[UIManager] UpdateScore 호출됨: now={nowScore}, total={totalScore}");
+        if(bestScore < nowScore)
+        {
+            bestScore = nowScore;
+        }
 
-        OnScoreUpdated?.Invoke(nowScore, totalScore);
+        Debug.Log($"[UIManager] UpdateScore : now={nowScore}, total={totalScore}, best={bestScore}");
+
+        
+        OnScoreUpdated?.Invoke(nowScore, totalScore, bestScore);
+    }
+    public void AddScore(int score)
+    {
+        nowScore += score;
+        totalScore += score;
+
+        if (bestScore < nowScore)
+        {
+            bestScore = nowScore;
+        }
+
+        UpdateScore(nowScore, totalScore, bestScore);
     }
 
     public void ResetNowScore()
     {
         nowScore = 0;
-        GameManager.Instance.nowScore = 0;
 
-        OnScoreUpdated?.Invoke(nowScore, totalScore);
+        OnScoreUpdated?.Invoke(nowScore, totalScore, bestScore);
     }
 }

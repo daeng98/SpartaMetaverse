@@ -16,11 +16,11 @@ public class Obstacle : MonoBehaviour
 
     public float widthPadding = 4f;
 
-    GameManager gm;
+    UIManager ui;
 
     public void Start()
     {
-        gm = GameManager.Instance;
+        ui = UIManager.Instance;
     }
 
     public Vector3 SetRandomPlace(Vector3 lastPosition, int obstacleCount)
@@ -45,7 +45,7 @@ public class Obstacle : MonoBehaviour
 
         if (player != null) 
         {
-            gm.AddScore(1);
+            ui.AddScore(1);
         }
     }
 }

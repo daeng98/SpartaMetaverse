@@ -8,9 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public int nowScore = 0;
-    public int totalScore = 0;
-
     private void Awake()
     {
         if (Instance == null)
@@ -36,10 +33,4 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainScenes");
     }
 
-    public void AddScore(int score)
-    {
-        nowScore += score;
-        totalScore += score;
-        UIManager.Instance.UpdateScore(nowScore, totalScore);
-    }
 }

@@ -11,16 +11,18 @@ public class GameUI : BaseUI
     private void OnEnable()
     {
         UIManager.OnScoreUpdated += UpdateNowScore;
-
+        Debug.Log("GameUI OnScoreUpdated OnEnable");
         nowScore.text = "0";
     }
 
     private void OnDisable()
     {
         UIManager.OnScoreUpdated -= UpdateNowScore;
+        Debug.Log("GameUI OnScoreUpdated OnDisable");
+        Debug.Log("Leaving MiniGame Scene - totalScore: " + UIManager.Instance.totalScore);
     }
 
-    private void UpdateNowScore(int now, int total)
+    private void UpdateNowScore(int now, int total, int best)
     {
         if (nowScore == null)
         {
