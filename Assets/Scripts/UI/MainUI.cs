@@ -10,7 +10,14 @@ public class MainUI : BaseUI
     [SerializeField] public TextMeshProUGUI totalScore;
     [SerializeField] public TextMeshProUGUI bestScore;
 
-    private void Awake()
+    private void Start()
+    {
+        Debug.Log("totalScore Main Scene: " + totalScore.text);
+        Debug.Log("bestScore Main Scene: " + bestScore.text); 
+        Debug.Log("MainUI instances: " + FindObjectsOfType<MainUI>().Length);
+    }
+
+    private void OnEnable()
     {
         UIManager.OnScoreUpdated -= UpdateTotalScore;
         UIManager.OnScoreUpdated -= UpdateBestScore;
@@ -18,13 +25,6 @@ public class MainUI : BaseUI
         UIManager.OnScoreUpdated += UpdateTotalScore;
         UIManager.OnScoreUpdated += UpdateBestScore;
         Debug.Log("MainUI OnScoreUpdated OnEnable");
-    }
-
-    private void Start()
-    {
-        Debug.Log("totalScore Main Scene: " + totalScore.text);
-        Debug.Log("bestScore Main Scene: " + bestScore.text);
-        Debug.Log("MainUI instances: " + FindObjectsOfType<MainUI>().Length);
     }
 
     //private void OnEnable()
@@ -43,20 +43,20 @@ public class MainUI : BaseUI
 
     private void UpdateTotalScore(int now, int total, int best)
     {
-        if (totalScore == null)
-        {
-            Debug.LogError("TotalScore : NULL");
-        }
+        //if (totalScore == null)
+        //{
+        //    Debug.LogError("TotalScore : NULL");
+        //}
 
         totalScore.text = total.ToString();
     }
 
     private void UpdateBestScore(int now, int total, int best)
     {
-        if (bestScore == null)
-        {
-            Debug.LogError("bestScore : NULL");
-        }
+        //if (bestScore == null)
+        //{
+        //    Debug.LogError("bestScore : NULL");
+        //}
 
         bestScore.text = best.ToString();
     }
