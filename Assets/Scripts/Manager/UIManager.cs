@@ -1,18 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
+public enum UIState
+{
+    Main,
+    How
+}
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    MainUI main;
+    HowtoUI how;
+
+    public TextMeshProUGUI Score;
+
+    private UIState currentState;
+
+    private void Awake()
     {
-        
+        main = GetComponentInChildren<MainUI>(true);
+        main.Init(this);
+        how = GetComponentInChildren<HowtoUI>(true);
+        how.Init(this);
+
+        ChangeState(UIState.Main);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetHow()
     {
-        
+        ChangeState(UIState.How);
+    }
+
+    public void ChangeState(UIState state)
+    {
+        currentState = state;
+        main.SetActive(currentState);
+        how.SetActive(currentState);
+    }
+
+    public void UpdateScore(int score)
+    {
+        Score.text = score.ToString();
     }
 }
