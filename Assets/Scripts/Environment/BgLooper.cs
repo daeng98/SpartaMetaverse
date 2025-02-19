@@ -9,7 +9,6 @@ public class BgLooper : MonoBehaviour
     public int numBgCount = 5;
     public Vector3 obstacleLastPosition = Vector3.zero;
 
-    // Start is called before the first frame update
     void Start()
     {
         Obstacle[] obstacles = GameObject.FindObjectsOfType<Obstacle>();
@@ -24,8 +23,6 @@ public class BgLooper : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
-
         if (collision.CompareTag("BackGround"))
         {
             float widthOfBgObject = ((BoxCollider2D)collision).size.x;

@@ -18,12 +18,20 @@ public class ResultUI : BaseUI
 
     public void OnClickReStartButton()
     {
+        ResetNowScore();
         GameManager.Instance.StartGame();
     }
 
     public void OnClickExitButton()
     {
+        ResetNowScore();
         GameManager.Instance.ExitGame();
+    }
+
+    public void ResetNowScore()
+    {
+        GameManager.Instance.nowScore = 0;
+        UIManager.Instance.nowScore.text = "0";
     }
     protected override UIState GetUIState()
     {

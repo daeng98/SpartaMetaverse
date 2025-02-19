@@ -15,11 +15,13 @@ public enum UIState
 public class UIManager : MonoBehaviour
 {
     MainUI main;
-    HowtoUI how;
+    HowUI how;
     GameUI game;
     ResultUI result;
 
-    public TextMeshProUGUI Score;
+    public TextMeshProUGUI nowScore;
+    //public TextMeshProUGUI bestScore;
+    public TextMeshProUGUI totalScore;
 
     private UIState currentState;
 
@@ -49,7 +51,7 @@ public class UIManager : MonoBehaviour
         if (main != null)
             main.Init(this);
 
-        how = GetComponentInChildren<HowtoUI>(true);
+        how = GetComponentInChildren<HowUI>(true);
         if (how != null)
             how.Init(this);
 
@@ -107,8 +109,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int score)
+    public void UpdateScore(int now, int total)
     {
-        Score.text = score.ToString();
+        nowScore.text = now.ToString();
+        totalScore.text = total.ToString();
     }
+
 }

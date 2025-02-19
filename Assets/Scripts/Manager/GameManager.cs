@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    private int currentScore = 0;
+    public int nowScore = 0;
+    private int totalScore = 0;
 
     private void Awake()
     {
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        UIManager.Instance.UpdateScore(0);
+        UIManager.Instance.UpdateScore(0, 0);
     }
 
 
@@ -42,7 +43,8 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int score)
     {
-        currentScore += score;
-        UIManager.Instance.UpdateScore(currentScore);
+        nowScore += score;
+        totalScore += score;
+        UIManager.Instance.UpdateScore(nowScore, totalScore);
     }
 }
