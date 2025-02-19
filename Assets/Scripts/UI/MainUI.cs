@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class MainUI : BaseUI
 {
-    private void Start()
-    {
-        this.SetActive(UIState.Main);
-    }
-
     protected override UIState GetUIState()
     {
         return UIState.Main;

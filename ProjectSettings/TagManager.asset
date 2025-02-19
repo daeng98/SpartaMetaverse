@@ -12,6 +12,8 @@ TagManager:
   - MiniGame
   - Water
   - UI
+  - Props
+  - Player
   - 
   - 
   - 
@@ -24,11 +26,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
+  - Floor 1
+  - Floor 2
+  - Floor 3
   - 
   - 
   - 

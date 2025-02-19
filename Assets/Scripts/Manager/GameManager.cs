@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,33 +10,39 @@ public class GameManager : MonoBehaviour
 
     private int currentScore = 0;
 
-    private UIManager uiManager;
-
     private void Awake()
     {
-        Instance = this;
-        uiManager = FindObjectOfType<UIManager>();
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     public void Start()
     {
-        uiManager.UpdateScore(0);
+        UIManager.Instance.UpdateScore(0);
     }
 
 
     public void StartGame()
     {
-        SceneManager.LoadScene("MiniGameScenes"); // ¾À ºÒ·¯¿À±â
+        SceneManager.LoadScene("MiniGameScenes");
     }
 
     public void ExitGame()
     {
-        SceneManager.LoadScene("MainScenes"); // ¾À ºÒ·¯¿À±â
+        SceneManager.LoadScene("MainScenes");
     }
 
     public void AddScore(int score)
     {
         currentScore += score;
-        uiManager.UpdateScore(currentScore);
+        UIManager.Instance.UpdateScore(currentScore);
     }
 }

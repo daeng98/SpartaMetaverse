@@ -17,10 +17,13 @@ public class Player : MonoBehaviour
     public bool godMode = false;
 
     GameManager gm;
+    UIManager ui;
 
     void Start()
     {
         gm = GameManager.Instance;
+        ui = UIManager.Instance;
+        
 
         animator = GetComponentInChildren<Animator>();  // 하위 까지 가져올 수 잇음
         rigid = GetComponent<Rigidbody2D>();
@@ -42,10 +45,7 @@ public class Player : MonoBehaviour
         {
             if(deathCooldown <= 0)
             {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                {
-                    gm.ExitGame();
-                }
+                ui.setResult();
             }
             else
             {

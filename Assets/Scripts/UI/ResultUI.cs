@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class ResultUI : BaseUI
 {
-    [SerializeField] private Button startButton;
+    [SerializeField] private Button restartButton;
     [SerializeField] private Button exitButton;
 
     public override void Init(UIManager uIManager)
     {
         base.Init(uIManager);
 
-        startButton.onClick.AddListener(OnClickStartButton);
+        restartButton.onClick.AddListener(OnClickReStartButton);
         exitButton.onClick.AddListener(OnClickExitButton);
     }
 
-    public void OnClickStartButton()
+    public void OnClickReStartButton()
     {
         GameManager.Instance.StartGame();
     }
@@ -25,9 +25,8 @@ public class ResultUI : BaseUI
     {
         GameManager.Instance.ExitGame();
     }
-
     protected override UIState GetUIState()
     {
-        return UIState.How;
+        return UIState.Result;
     }
 }
