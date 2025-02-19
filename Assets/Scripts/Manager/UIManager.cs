@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,13 +20,14 @@ public class UIManager : MonoBehaviour
     GameUI game;
     ResultUI result;
 
-    public TextMeshProUGUI nowScore;
-    //public TextMeshProUGUI bestScore;
-    public TextMeshProUGUI totalScore;
+    private int nowScore = 0;
+    private int totalScore = 0;
 
     private UIState currentState;
 
     public static UIManager Instance;
+
+    public static event Action<int, int> OnScoreUpdated;
 
     private void Awake()
     {
@@ -81,11 +83,6 @@ public class UIManager : MonoBehaviour
             result.SetActive(currentState);
     }
 
-    public void setResult()
-    {
-        ChangeState(UIState.Result);
-    }
-
     public void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -111,8 +108,35 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScore(int now, int total)
     {
-        nowScore.text = now.ToString();
-        totalScore.text = total.ToString();
+        if (main == null)
+        {
+            main = FindObjectOfType<MainUI>();
+            if (main == null)
+            {
+                Debug.LogError("MainUI를 찾을 수 없습니다.");
+                return;
+            }
+        }
+
+        if (main.totalScore == null)
+        {
+            Debug.LogError("TotalScore가 NULL입니다.");
+            return;
+        }
+
+        nowScore = now;
+        totalScore = total;
+
+        Debug.Log($"[UIManager] UpdateScore 호출됨: now={nowScore}, total={totalScore}");
+
+        OnScoreUpdated?.Invoke(nowScore, totalScore);
     }
 
+    public void ResetNowScore()
+    {
+        nowScore = 0;
+        GameManager.Instance.nowScore = 0;
+
+        OnScoreUpdated?.Invoke(nowScore, totalScore);
+    }
 }

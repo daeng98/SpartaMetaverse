@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,23 +17,16 @@ public class ResultUI : BaseUI
         exitButton.onClick.AddListener(OnClickExitButton);
     }
 
-    public void OnClickReStartButton()
+    private void OnClickReStartButton()
     {
-        ResetNowScore();
         GameManager.Instance.StartGame();
     }
 
-    public void OnClickExitButton()
+    private void OnClickExitButton()
     {
-        ResetNowScore();
         GameManager.Instance.ExitGame();
     }
 
-    public void ResetNowScore()
-    {
-        GameManager.Instance.nowScore = 0;
-        UIManager.Instance.nowScore.text = "0";
-    }
     protected override UIState GetUIState()
     {
         return UIState.Result;

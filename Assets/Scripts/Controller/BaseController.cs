@@ -22,6 +22,17 @@ public class BaseController : MonoBehaviour
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        stat = GetComponent<StatController>();
+
+        if (rigid == null)
+        {
+            Debug.LogError("Not Founded Rigidbody");
+        }
+
+        if (stat == null)
+        {
+            Debug.LogError("Not Founded StatController");
+        }
     }
 
     protected virtual void FixedUpdate()
@@ -37,7 +48,7 @@ public class BaseController : MonoBehaviour
             lastDirection = direction;
         }
 
-        direction = direction * 3;
+        direction = direction * stat.Speed;
 
         rigid.velocity = direction;
     }

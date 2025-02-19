@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public int nowScore = 0;
-    private int totalScore = 0;
+    public int totalScore = 0;
 
     private void Awake()
     {
@@ -25,14 +25,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Start()
-    {
-        UIManager.Instance.UpdateScore(0, 0);
-    }
-
-
     public void StartGame()
     {
+        UIManager.Instance.ResetNowScore();
         SceneManager.LoadScene("MiniGameScenes");
     }
 
