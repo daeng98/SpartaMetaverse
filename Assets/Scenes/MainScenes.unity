@@ -5660,6 +5660,10 @@ MonoBehaviour:
   LeftRight: {fileID: 21300004, guid: ec47f75fe8aff1644ac73998f4ad31b5, type: 3}
   Up: {fileID: 21300002, guid: ec47f75fe8aff1644ac73998f4ad31b5, type: 3}
   Down: {fileID: 21300000, guid: ec47f75fe8aff1644ac73998f4ad31b5, type: 3}
+  howUI: {fileID: 335958629}
+  target:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &1122055515
 MonoBehaviour:
   m_ObjectHideFlags: 0

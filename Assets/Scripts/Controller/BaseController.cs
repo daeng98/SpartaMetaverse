@@ -13,6 +13,7 @@ public class BaseController : MonoBehaviour
     [SerializeField] protected Sprite Up;
     [SerializeField] protected Sprite Down;
 
+    public Vector2 lastDirection = Vector2.down;
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
 
@@ -31,6 +32,11 @@ public class BaseController : MonoBehaviour
 
     private void Movement(Vector2 direction)
     {
+        if (direction != Vector2.zero)
+        {
+            lastDirection = direction;
+        }
+
         direction = direction * 3;
 
         rigid.velocity = direction;
@@ -38,11 +44,14 @@ public class BaseController : MonoBehaviour
 
     private void Rotate(Vector2 direction)
     {
+        if (direction == Vector2.zero)
+        {
+            direction = lastDirection;
+        }
+
         bool filpX = direction.x > 0f;
         bool filpUp = direction.y > 0f;
         bool filpDown = direction.y < 0f;
-        bool stayX = direction.x == 0f;
-        bool stayY = direction.y == 0f;
 
         characterRenderer.sprite = LeftRight;
 
@@ -58,11 +67,6 @@ public class BaseController : MonoBehaviour
         }
 
         if (filpDown)
-        {
-            characterRenderer.sprite = Down;
-        }
-
-        if (stayX && stayY)
         {
             characterRenderer.sprite = Down;
         }
