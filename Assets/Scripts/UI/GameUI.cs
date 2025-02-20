@@ -19,16 +19,10 @@ public class GameUI : BaseUI
     {
         UIManager.OnScoreUpdated -= UpdateNowScore;
         Debug.Log("GameUI OnScoreUpdated OnDisable");
-        Debug.Log("Leaving MiniGame Scene - totalScore: " + UIManager.Instance.totalScore);
     }
 
-    private void UpdateNowScore(int now, int total, int best)
+    private void UpdateNowScore(int now, int total, int best)       // 현재 점수 갱신
     {
-        if (nowScore == null)
-        {
-            Debug.LogError("nowScore : NULL");
-            return;
-        }
         nowScore.text = now.ToString();
     }
 

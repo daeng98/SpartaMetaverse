@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();  // 하위 까지 가져올 수 잇음
+        animator = GetComponentInChildren<Animator>();
         rigid = GetComponent<Rigidbody2D>();
 
         if(animator == null )
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Update()
+    void Update()           // 죽었을 때 결과창 띄어줌, 스페이스바 눌리면 isFlap = true
     {
         if (isDead)
         {
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void FixedUpdate()          // 이전 강의 내용 그대로 사용, Flap 될때 행동
     {
         if (isDead) return;
 
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Euler(0,0,angle);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)          // 이전 강의 내용 그대로 사용, 1초 뒤 죽음
     {
         if (godMode) return;
 

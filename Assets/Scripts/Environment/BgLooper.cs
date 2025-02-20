@@ -21,7 +21,7 @@ public class BgLooper : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)         // 이전 강의 내용 그대로 사용, 뒷 배경 생성
     {
         if (collision.CompareTag("BackGround"))
         {

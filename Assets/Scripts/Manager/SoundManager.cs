@@ -24,7 +24,7 @@ public class SoundManager : MonoBehaviour
         ChangeBackGroundMusic(musicClip);
     }
 
-    public void ChangeBackGroundMusic(AudioClip clip)
+    public void ChangeBackGroundMusic(AudioClip clip)       // 단순하게 브금만 사용하려고 만듬, 지정된 클립 재생
     {
         musicAudioSource.Stop();
         musicAudioSource.clip = clip;

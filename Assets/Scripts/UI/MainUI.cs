@@ -10,13 +10,6 @@ public class MainUI : BaseUI
     [SerializeField] public TextMeshProUGUI totalScore;
     [SerializeField] public TextMeshProUGUI bestScore;
 
-    private void Start()
-    {
-        Debug.Log("totalScore Main Scene: " + totalScore.text);
-        Debug.Log("bestScore Main Scene: " + bestScore.text); 
-        Debug.Log("MainUI instances: " + FindObjectsOfType<MainUI>().Length);
-    }
-
     private void OnEnable()
     {
         UIManager.OnScoreUpdated -= UpdateTotalScore;
@@ -27,37 +20,13 @@ public class MainUI : BaseUI
         Debug.Log("MainUI OnScoreUpdated OnEnable");
     }
 
-    //private void OnEnable()
-    //{
-    //    UIManager.OnScoreUpdated += UpdateTotalScore;
-    //    UIManager.OnScoreUpdated += UpdateBestScore;
-    //    Debug.Log("MainUI OnScoreUpdated OnEnable");
-    //}
-
-    //private void OnDisable()
-    //{
-    //    UIManager.OnScoreUpdated -= UpdateTotalScore;
-    //    UIManager.OnScoreUpdated -= UpdateBestScore;
-    //    Debug.Log("MainUI OnScoreUpdated OnDisable");
-    //}
-
-    private void UpdateTotalScore(int now, int total, int best)
+    private void UpdateTotalScore(int now, int total, int best)         // 총합 점수 갱신
     {
-        //if (totalScore == null)
-        //{
-        //    Debug.LogError("TotalScore : NULL");
-        //}
-
         totalScore.text = total.ToString();
     }
 
-    private void UpdateBestScore(int now, int total, int best)
+    private void UpdateBestScore(int now, int total, int best)          // 최고 점수 갱신
     {
-        //if (bestScore == null)
-        //{
-        //    Debug.LogError("bestScore : NULL");
-        //}
-
         bestScore.text = best.ToString();
     }
 

@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
         offset = transform.position - target.position;
     }
 
-    private void Update()
+    private void Update()       // 플레이어 카메라 추적
     {
         if (target == null) return;
 

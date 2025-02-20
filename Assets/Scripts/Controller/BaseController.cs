@@ -35,13 +35,13 @@ public class BaseController : MonoBehaviour
         }
     }
 
-    protected virtual void FixedUpdate()
+    protected virtual void FixedUpdate()        // FixedUpdate에서 이동 관련 사용
     {
         Rotate(movementDirection);
         Movement(movementDirection);
     }
 
-    private void Movement(Vector2 direction)
+    private void Movement(Vector2 direction)        // 플레이어 이동
     {
         if (direction != Vector2.zero)
         {
@@ -49,11 +49,10 @@ public class BaseController : MonoBehaviour
         }
 
         direction = direction * stat.Speed;
-
         rigid.velocity = direction;
     }
 
-    private void Rotate(Vector2 direction)
+    private void Rotate(Vector2 direction)      // 회전 및 그에 맞는 스프라이트 변경
     {
         if (direction == Vector2.zero)
         {

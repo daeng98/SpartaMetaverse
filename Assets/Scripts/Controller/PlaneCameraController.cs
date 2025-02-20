@@ -7,7 +7,6 @@ public class FollowCamera : MonoBehaviour
     public Transform target;
     float offsetX;
 
-    // Start is called before the first frame update
     void Start()
     {
         if(target == null) return;
@@ -16,8 +15,7 @@ public class FollowCamera : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update()           // 이전 강의 내용 그대로 사용, 미니게임 비행기 카메라 추적
     {
         if(target == null) return;
 

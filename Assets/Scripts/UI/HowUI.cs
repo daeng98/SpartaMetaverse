@@ -16,12 +16,12 @@ public class HowUI : BaseUI
         exitButton.onClick.AddListener(OnClickExitButton);
     }
 
-    public void OnClickStartButton()
+    public void OnClickStartButton()    // 시작 버튼 눌렀을때
     {
         GameManager.Instance.StartGame();
     }
 
-    public void OnClickExitButton()
+    public void OnClickExitButton()     // 나가기 버튼 눌렀을때
     {
         this.SetActive(UIState.Main);
     }

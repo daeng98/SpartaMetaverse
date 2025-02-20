@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
     public static UIManager Instance;
 
-    public static event Action<int, int, int> OnScoreUpdated;
+    public static event Action<int, int, int> OnScoreUpdated;       // 점수 관리를 위한 이벤트
 
     private void Awake()
     {
@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour
             result.Init(this);
     }
 
-    public void ChangeState(UIState state)
+    public void ChangeState(UIState state)      // UI 전환
     {
         currentState = state;
 
@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)      // 씬에 따라 초기에 보여지는 UI설정
     {
 
         if (scene.name == "MiniGameScenes")
@@ -107,7 +107,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int now, int total, int best)
+    public void UpdateScore(int now, int total, int best)       // 점수 갱신
     {
         nowScore = now;
         totalScore = total;
@@ -118,11 +118,10 @@ public class UIManager : MonoBehaviour
         }
 
         Debug.Log($"[UIManager] UpdateScore : now={nowScore}, total={totalScore}, best={bestScore}");
-
-        
         OnScoreUpdated?.Invoke(nowScore, totalScore, bestScore);
     }
-    public void AddScore(int score)
+
+    public void AddScore(int score)     // 점수 추가
     {
         nowScore += score;
         totalScore += score;
@@ -135,7 +134,7 @@ public class UIManager : MonoBehaviour
         UpdateScore(nowScore, totalScore, bestScore);
     }
 
-    public void ResetNowScore()
+    public void ResetNowScore()     // 현재 점수 초기화
     {
         nowScore = 0;
 

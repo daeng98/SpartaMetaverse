@@ -23,7 +23,7 @@ public class Obstacle : MonoBehaviour
         ui = UIManager.Instance;
     }
 
-    public Vector3 SetRandomPlace(Vector3 lastPosition, int obstacleCount)
+    public Vector3 SetRandomPlace(Vector3 lastPosition, int obstacleCount)          // 이전 강의 내용 그대로 사용, 장애물 생성
     {
         float holeSize = Random.Range(holeSizeMin, holeSizeMax);
         float halfHoleSize = holeSize / 2;
@@ -39,7 +39,7 @@ public class Obstacle : MonoBehaviour
         return placePosition;
     }   
 
-    public void OnTriggerExit2D(Collider2D collision)
+    public void OnTriggerExit2D(Collider2D collision)       // 이전 강의 내용 그대로 사용, 장애물 통과시 점수 증가
     {
         Player player = collision.GetComponent<Player>();
 

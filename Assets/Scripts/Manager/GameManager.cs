@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    public void StartGame()         // 게임 시작
     {
         UIManager.Instance.ResetNowScore();
         SceneManager.LoadScene("MiniGameScenes");
     }
 
-    public void ExitGame()
+    public void ExitGame()          // 나가기
     {
         SceneManager.LoadScene("MainScenes");
     }

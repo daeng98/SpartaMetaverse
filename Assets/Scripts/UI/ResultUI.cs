@@ -25,12 +25,12 @@ public class ResultUI : BaseUI
         bestScore.text = UIManager.Instance.bestScore.ToString();
     }
 
-    private void OnClickReStartButton()
+    private void OnClickReStartButton()     // 재시작 버튼 눌렀을때
     {
         GameManager.Instance.StartGame();
     }
 
-    private void OnClickExitButton()
+    private void OnClickExitButton()        // 나가기 버튼 눌렀을때
     {
         GameManager.Instance.ExitGame();
     }
