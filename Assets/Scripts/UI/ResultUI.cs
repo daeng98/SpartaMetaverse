@@ -8,6 +8,8 @@ public class ResultUI : BaseUI
 {
     [SerializeField] private Button restartButton;
     [SerializeField] private Button exitButton;
+    [SerializeField] public TextMeshProUGUI Score;
+    [SerializeField] public TextMeshProUGUI bestScore;
 
     public override void Init(UIManager uIManager)
     {
@@ -15,6 +17,12 @@ public class ResultUI : BaseUI
 
         restartButton.onClick.AddListener(OnClickReStartButton);
         exitButton.onClick.AddListener(OnClickExitButton);
+    }
+
+    private void Update()
+    {
+        Score.text = UIManager.Instance.nowScore.ToString();
+        bestScore.text = UIManager.Instance.bestScore.ToString();
     }
 
     private void OnClickReStartButton()

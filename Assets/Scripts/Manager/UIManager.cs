@@ -20,8 +20,8 @@ public class UIManager : MonoBehaviour
     GameUI game;
     ResultUI result;
 
-    private int nowScore = 0;
-    private int bestScore = 0;
+    public int nowScore = 0;
+    public int bestScore = 0;
     public int totalScore = 0;
 
     private UIState currentState;
