@@ -72,4 +72,4 @@ ZEP은 사용자들이 캐릭터를 조작하며 맵에서 상호작용 할 수 
 # 결과
 ![스크린샷 2025-02-19 204513](https://github.com/user-attachments/assets/8b91157d-2e27-4f24-a528-0e873202f12f)
 
-https://www.youtube.com/watch?v=cqoUXAXvgXo
+https://www.youtube.com/watch?v=6LK9-IwRgEc
